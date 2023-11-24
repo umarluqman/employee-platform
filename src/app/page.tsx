@@ -25,17 +25,8 @@ async function getData(): Promise<Employee[]> {
   return data.data;
 }
 
-export default async function DemoPage() {
+export default async function Home() {
   const data = await getData();
-
-  let navList = [
-    {
-      id: "employeeList",
-      href: "/",
-      isCurrentPage: false,
-      title: "Employee List",
-    },
-  ];
 
   return (
     <div className="container mx-auto py-10">
