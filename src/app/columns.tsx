@@ -83,7 +83,7 @@ export const columns: ColumnDef<Employee>[] = [
                   useStore.setState({ selectedEmployee: employee })
                 }
               >
-                View employee
+                Edit employee
               </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
