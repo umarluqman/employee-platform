@@ -23,10 +23,12 @@ import {
 } from "@/components/ui/form";
 import { useStore } from "@/store";
 import Link from "next/link";
+import { Label } from "@radix-ui/react-dropdown-menu";
 const formSchema = z.object({
   name: z.string(),
   salary: z.number(),
   age: z.number(),
+  image: z.string().optional(),
 });
 
 export default function EmployeeDetails() {
@@ -38,6 +40,7 @@ export default function EmployeeDetails() {
       name: selectedEmployee?.employee_name ?? "",
       salary: selectedEmployee?.employee_salary ?? 0,
       age: selectedEmployee?.employee_age ?? 0,
+      image: selectedEmployee?.profile_image ?? "",
     },
   });
 
@@ -72,7 +75,20 @@ export default function EmployeeDetails() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-6">
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem className="max-w-sm">
+                    <FormLabel>Profile Picture</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="file" className="h-[32px]" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="name"

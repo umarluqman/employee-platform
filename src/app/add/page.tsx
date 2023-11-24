@@ -27,6 +27,7 @@ const formSchema = z.object({
   name: z.string(),
   salary: z.number(),
   age: z.number(),
+  image: z.string().optional(),
 });
 
 export default function EmployeeDetails() {
@@ -36,6 +37,7 @@ export default function EmployeeDetails() {
       name: "",
       salary: 0,
       age: 0,
+      image: "",
     },
   });
 
@@ -44,21 +46,6 @@ export default function EmployeeDetails() {
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
-
-  let navList = [
-    {
-      id: "employeeList",
-      href: "/",
-      isCurrentPage: false,
-      title: "Employee List",
-    },
-    {
-      id: "addEmployee",
-      href: "/add",
-      isCurrentPage: true,
-      title: "Add Employee",
-    },
-  ];
 
   return (
     <div className="container mx-auto py-10">
@@ -70,7 +57,20 @@ export default function EmployeeDetails() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-6">
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem className="max-w-sm">
+                    <FormLabel>Profile Picture</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="file" className="h-[32px]" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="name"
