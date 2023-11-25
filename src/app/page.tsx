@@ -38,7 +38,7 @@ export default async function Home() {
               Search and filter employees in the company.
             </CardDescription>
           </div>
-          <Link href="/add">
+          <Link href={`/add`}>
             <Button>
               <Plus />
               Add Employee

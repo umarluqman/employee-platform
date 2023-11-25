@@ -14,6 +14,7 @@ import {
 import { useStore, type Employee } from "@/store";
 import Link from "next/link";
 import truncate from "truncate";
+import useTranslation from "next-translate/useTranslation";
 // This type is used to define the shape of the data.
 
 export const columns: ColumnDef<Employee>[] = [
@@ -67,6 +68,9 @@ export const columns: ColumnDef<Employee>[] = [
     cell: ({ row }) => {
       const employee = row.original;
 
+      let { t, ...rest } = useTranslation("common");
+      console.log({ t: t("actions"), rest });
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -76,7 +80,7 @@ export const columns: ColumnDef<Employee>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel>{t("actions")}</DropdownMenuLabel>
             <Link href={`/${employee.id}`}>
               <DropdownMenuItem
                 onClick={() =>

@@ -1,0 +1,10 @@
+{
+  "locales": ["en", "ms"],
+  "defaultLocale": "en",
+  "pages": {
+    "*": ["common"],
+    "/": ["employee"],
+    "/add": ["employee"],
+    "/[employeeId]": ["employee"]
+  }
+}

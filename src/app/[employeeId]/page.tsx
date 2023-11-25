@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import { useStore } from "@/store";
 import Link from "next/link";
-import { Label } from "@radix-ui/react-dropdown-menu";
+
 const formSchema = z.object({
   name: z.string(),
   salary: z.number(),
